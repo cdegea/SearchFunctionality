@@ -13,7 +13,7 @@ namespace SearchFunctionality {
         [Test]
         public void return_cities_when_search_contains_two_or_more_characters() {
             var expectedCities = new List<string> { "Valencia", "Vancouver" };
-            var twoCharactersText = "Va";
+            var twoCharactersText = "Va ";
 
             var citiesFound = new CitiesSearch().GetCitiesBy(twoCharactersText);
 
@@ -41,6 +41,16 @@ namespace SearchFunctionality {
             var allCitiesSearch = "*";
 
             var citiesFound = new CitiesSearch().GetCitiesBy(allCitiesSearch);
+
+            citiesFound.Should().BeEquivalentTo(expectedCities);
+        }
+
+        [Test]
+        public void return_cities_when_search_contains_white_spaces() {
+            var expectedCities = new List<string> { "Valencia", "Vancouver" };
+            var twoCharactersText = "Va ";
+
+            var citiesFound = new CitiesSearch().GetCitiesBy(twoCharactersText);
 
             citiesFound.Should().BeEquivalentTo(expectedCities);
         }
