@@ -24,7 +24,7 @@ namespace SearchFunctionality {
         }
 
         [Test]
-        public void return_cities_with_sensitive_case() {
+        public void return_cities_with_insensitive_case() {
             var expectedCities = new List<string> { "Valencia", "Vancouver" };
             var twoCharactersText = "va";
 
