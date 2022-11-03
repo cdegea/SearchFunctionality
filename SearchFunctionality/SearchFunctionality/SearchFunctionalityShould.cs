@@ -42,7 +42,7 @@ namespace SearchFunctionality {
         }
 
         public List<string> GetCitiesBy(string searchText) {
-            return Cities.Where(city => city.Contains(searchText)).ToList();
+            return Cities.Where(city => city.ToLower().Contains(searchText.ToLower())).ToList();
         }
     }
 }
