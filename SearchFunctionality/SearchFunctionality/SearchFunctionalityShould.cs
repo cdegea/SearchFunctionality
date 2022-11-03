@@ -22,10 +22,20 @@ namespace SearchFunctionality {
 
             citiesFound.Should().BeEquivalentTo(expectedCities);
         }
+
+        [Test]
+        public void return_cities_with_sensitive_case() {
+            var expectedCities = new List<string> { "Valencia", "Vancouver" };
+            var twoCharactersText = "va";
+
+            var citiesFound = new CitiesSearch().GetCitiesBy(twoCharactersText);
+
+            citiesFound.Should().BeEquivalentTo(expectedCities);
+        }
     }
 
     public class CitiesSearch {
-        public List<string> Cities { get; }
+        private List<string> Cities { get; }
 
         public CitiesSearch() {
             Cities = new List<string> { "Valencia", "Vancouver" };
