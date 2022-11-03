@@ -6,7 +6,7 @@ namespace SearchFunctionality {
 
         [Test]
         public void return_no_results_when_search_is_fewer_than_two_characters() {
-            var twoCharactersText = "Pa";
+            var twoCharactersText = "P";
 
             var result = new CitiesSearch().GetCitiesBy(twoCharactersText);
 
