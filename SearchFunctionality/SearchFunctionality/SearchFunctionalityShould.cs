@@ -41,9 +41,9 @@ namespace SearchFunctionality {
                 "Sydney", "New York City", "London", "Bangkok", 
                 "Hong Kong", "Dubai", "Rome", "Instanbul"
             };
-            var twoCharactersText = "*";
+            var allCitiesSearch = "*";
 
-            var citiesFound = new CitiesSearch().GetCitiesBy(twoCharactersText);
+            var citiesFound = new CitiesSearch().GetCitiesBy(allCitiesSearch);
 
             citiesFound.Should().BeEquivalentTo(expectedCities);
         }
@@ -62,7 +62,11 @@ namespace SearchFunctionality {
         }
 
         public List<string> GetCitiesBy(string searchText) {
-            return Cities.Where(city => searchText is "*" || searchText.Length >= 2 && city.ToLower().Contains(searchText.ToLower())).ToList();
+            return Cities.Where(city => IsFound(searchText, city)).ToList();
+        }
+
+        private static bool IsFound(string searchText, string city) {
+            return searchText is "*" || searchText.Length >= 2 && city.ToLower().Contains(searchText.ToLower());
         }
     }
 }
