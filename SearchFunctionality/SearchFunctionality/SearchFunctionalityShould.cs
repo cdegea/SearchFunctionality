@@ -73,7 +73,8 @@ namespace SearchFunctionality {
         }
 
         private static bool IsFound(string searchText, string city) {
-            return searchText is "*" || searchText.Length >= 2 && city.ToLower().Contains(searchText.ToLower());
+            var textToSearch = searchText.Trim().ToLower();
+            return textToSearch is "*" || textToSearch.Length >= 2 && city.ToLower().Contains(textToSearch.ToLower());
         }
     }
 }
