@@ -32,17 +32,37 @@ namespace SearchFunctionality {
 
             citiesFound.Should().BeEquivalentTo(expectedCities);
         }
+
+        [Test]
+        public void return_all_city_name_when_search_is_asterisk() {
+            var expectedCities = new List<string> {
+                "Paris", "Budapest", "Skopje", "Rotterdam", 
+                "Valencia", "Vancouver", "Amsterdam", "Vienna", 
+                "Sydney", "New York City", "London", "Bangkok", 
+                "Hong Kong", "Dubai", "Rome", "Instanbul"
+            };
+            var twoCharactersText = "*";
+
+            var citiesFound = new CitiesSearch().GetCitiesBy(twoCharactersText);
+
+            citiesFound.Should().BeEquivalentTo(expectedCities);
+        }
     }
 
     public class CitiesSearch {
         private List<string> Cities { get; }
 
         public CitiesSearch() {
-            Cities = new List<string> { "Valencia", "Vancouver" };
+            Cities = new List<string> {
+                "Paris", "Budapest", "Skopje", "Rotterdam",
+                "Valencia", "Vancouver", "Amsterdam", "Vienna",
+                "Sydney", "New York City", "London", "Bangkok",
+                "Hong Kong", "Dubai", "Rome", "Instanbul"
+            };
         }
 
         public List<string> GetCitiesBy(string searchText) {
-            return Cities.Where(city => city.ToLower().Contains(searchText.ToLower())).ToList();
+            return Cities.Where(city => searchText is "*" || searchText.Length >= 2 && city.ToLower().Contains(searchText.ToLower())).ToList();
         }
     }
 }
