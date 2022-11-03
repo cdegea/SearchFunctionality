@@ -32,12 +32,7 @@ namespace SearchFunctionality {
         }
 
         public List<string> GetCitiesBy(string searchText) {
-            var citiesFound = new List<string>();
-            foreach (var city in Cities) {
-                if (city.Contains(searchText))
-                    citiesFound.Add(city);
-            }
-            return citiesFound;
+            return Cities.Where(city => city.Contains(searchText)).ToList();
         }
     }
 }
