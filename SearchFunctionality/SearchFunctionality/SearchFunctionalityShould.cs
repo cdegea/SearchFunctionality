@@ -1,14 +1,11 @@
 namespace SearchFunctionality {
     public class SearchFunctionalityShould {
-        [SetUp]
-        public void Setup() {
-        }
 
         [Test]
         public void return_no_results_when_search_is_fewer_than_two_characters() {
-            var twoCharactersText = "P";
+            var oneCharacterText = "P";
 
-            var result = new CitiesSearch().GetCitiesBy(twoCharactersText);
+            var result = new CitiesSearch().GetCitiesBy(oneCharacterText);
 
             result.Count.Should().Be(0);
         }
